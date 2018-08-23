@@ -10,3 +10,4 @@ The main idea is to create metapredictor which will use the method of consensus 
 7. Disopred2
 In the paper, written in Serbian, you can find an explanation for all the methods and biology terms used during the development.
 The software, itself, will be fully in English.
+All the software used while creating this project is used for academic purposes only.
