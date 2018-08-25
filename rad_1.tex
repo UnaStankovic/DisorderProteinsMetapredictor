@@ -1,0 +1,100 @@
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[a4paper]{article}
+
+\usepackage{color}
+\usepackage{url}
+\usepackage[T2A]{fontenc} % enable Cyrillic fonts
+\usepackage[utf8]{inputenc} % make weird characters work
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage[english,serbian]{babel}
+%\usepackage[english,serbianc]{babel} %ukljuciti babel sa ovim opcijama, umesto gornjim, ukoliko se koristi cirilica
+
+\usepackage[unicode]{hyperref}
+\hypersetup{colorlinks,citecolor=green,filecolor=green,linkcolor=blue,urlcolor=blue}
+
+%\newtheorem{primer}{Пример}[section] %ćirilični primer
+\newtheorem{primer}{Primer}[section]
+
+\begin{document}
+
+\title{Razvoj metaprediktora neuređenosti proteina\\ \small{Master rad iz oblasti\\Bioinformatika\\ Matematički fakultet}}
+
+\author{Una Stanković\\ una\_stankovic@yahoo.com}
+\date{18.~jul 2018.}
+\maketitle
+
+\abstract{
+U ovom radu biće predstavljen proces kreiranja metaprediktora za analizu neuređenosti proteina. Najpre će biti objašnjeni svi pojmovi vezani za biološke osnove ovog problema, a potom i sam razvojni proces iz informatičkog ugla. Sav softver primenjen pri izradi rada je korišćen isključivo u akademske svrhe.}
+
+\tableofcontents
+
+\newpage
+
+\section{Uvod}
+\label{sec:uvod}
+Neuređenost proteina 
+
+\section{Biološke osnove}
+\label{sec:prvi}
+U ovoj sekciji biće ukratko predstavljene biološke osnove neophodne za razumevanje rada i motivacije koja stoji iza određenih njegovih elemenata.\\\\
+Najpre, biće opisano šta su proteini koje su njihove osnovne funkcije i kakva im je struktura. Potom, biće opisana svaka od struktura ponaosob, uz priložen grafički prikaz istih. Na kraju, posebno će biti opisani neuređeni proteini, njihova uloga i uzroci koji mogu dovesti do njihove pojave. 
+
+\subsection{Proteini - Funkcije i struktura}
+\label{sec:proteini}
+Proteini (grč. protos - $"$zauzimam prvo mesto$"$) i peptidi su linearni polimeri izgrađeni od 22 L-aminokiseline \footnote{L-aminokiseline su one sa levom prostornom konfiguracijom, analogno, postoje i D-aminokiseline, sa desnom} koje se javljaju u prirodi i povezani su peptidnim vezama. ~\cite{biopathways} \\\\
+Proteini su biološki najaktivniji molekuli sa velikim brojem esencijalnih uloga koje se dele na:
+\begin{itemize}
+\item dinamičke, od kojih su najvažnije:
+\begin{enumerate} 
+\item transportna - prenos molekula (kiseonika, gvožđa, lipida) i hormona od mesta sinteze do mesta delovanja,
+\item biološka - regulacija metaboličkih procesa u ćeliji, kontrola i regulacija transkripcije gena i translacija,
+\item katalizatorska - biološka katalizacija \footnote{Katalizacija predstavlja proces povećavanja brzina reakcija},
+\item zaštitna - keratin, koagulacija krvi,
+\item održavanje zapremine tečnosti u organizmu,
+\end{enumerate}
+\item strukturne
+\begin{enumerate}
+\item obezbeđivanje čvrstine i elastičnosti organa,
+\item davanje oblika organizmu,
+\item izgradnja strukturnih elemenata ćelije i
+\item bitna uloga u kontraktilnim i pokretnim elementima organizma.
+\end{enumerate}
+\end{itemize} 
+~\cite{spasic}
+
+
+\section{Prediktori}
+\label{sec:prediktori}
+\begin{itemize}
+\item SPINE-D/SPOT-Disorder
+\item PONDR
+\item s2D
+\item IUPred
+\item ESpritz
+\item SEG
+\item Disopred2
+\end{itemize}
+
+\subsection{SPOT-Disorder prediktor}
+Abstract
+MOTIVATION:
+Capturing long-range interactions between structural but not sequence neighbors of proteins is a long-standing challenging problem in bioinformatics. Recently, long short-term memory (LSTM) networks have significantly improved the accuracy of speech and image classification problems by remembering useful past information in long sequential events. Here, we have implemented deep bidirectional LSTM recurrent neural networks in the problem of protein intrinsic disorder prediction.
+RESULTS:
+The new method, named SPOT-Disorder, has steadily improved over a similar method using a traditional, window-based neural network (SPINE-D) in all datasets tested without separate training on short and long disordered regions. Independent tests on four other datasets including the datasets from critical assessment of structure prediction (CASP) techniques and >10 000 annotated proteins from MobiDB, confirmed SPOT-Disorder as one of the best methods in disorder prediction. Moreover, initial studies indicate that the method is more accurate in predicting functional sites in disordered regions. These results highlight the usefulness combining LSTM with deep bidirectional recurrent neural networks in capturing non-local, long-range interactions for bioinformatics applications.
+AVAILABILITY AND IMPLEMENTATION:
+SPOT-disorder is available as a web server and as a standalone program at: http://sparks-lab.org/server/SPOT-disorder/index.php .
+
+
+
+\section{Zaključak}
+\label{sec:zakljucak}
+
+\addcontentsline{toc}{section}{Literatura}
+\appendix
+\bibliography{seminarski} 
+\bibliographystyle{plain}
+\section{Literatura}
+% SPOT-D https://academic.oup.com/bioinformatics/article-abstract/33/5/685/2725549
+\end{document}
