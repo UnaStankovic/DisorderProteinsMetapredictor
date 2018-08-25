@@ -1,7 +1,7 @@
 # DisorderProteinsMetapredictor
 This project represents my Master Studies final project. 
 The main idea is to create metapredictor which will use the method of consensus to determine the best out of following 7 predictors:
-1. SPINE-D
+1. SPINE-D/ SPOT-D
 2. PONDR
 3. s2D
 4. IUPred
