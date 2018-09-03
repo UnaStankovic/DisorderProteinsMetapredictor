@@ -9,4 +9,5 @@
 *.blg
 *.o
 *.exe
-
+*.cls
+*.un~
