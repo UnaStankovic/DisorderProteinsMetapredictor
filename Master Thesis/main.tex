@@ -1,8 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Masters/Doctoral Thesis 
-% LaTeX Template
-% Version 2.5 (27/8/17)
-%
 % This template was downloaded from:
 % http://www.LaTeXTemplates.com
 %
@@ -102,18 +97,20 @@ headsepline, % Uncomment to get a line under the header
 \addresses{https://www.linkedin.com/in/una-stankovic-443a35137/} % Your address, this is not currently used anywhere in the template, print it elsewhere with \addressname
 
 \subject{Bioinformatika} % Your subject area, this is not currently used anywhere in the template, print it elsewhere with \subjectname
-\keywords{} % Keywords for your thesis, this is not currently used anywhere in the template, print it elsewhere with \keywordnames
+\keywords{.} % Keywords for your thesis, this is not currently used anywhere in the template, print it elsewhere with \keywordnames
 \university{\href{http://www.bg.ac.rs}{Univerzitet u Beogradu}} % Your university's name and URL, this is used in the title page and abstract, print it elsewhere with \univname
 \department{\href{http://www.racunarstvo.matf.bg.ac.rs/}{Katedra za Računarstvo i informatiku}} % Your department's name and URL, this is used in the title page and abstract, print it elsewhere with \deptname
 \group{.} % Your research group's name and URL, this is used in the title page, print it elsewhere with \groupname
 % \group{\href{http://researchgroup.university.com}{Research Group Name}} % Your research group's name and URL, this is used in the title page, print it elsewhere with \groupname
 \faculty{\href{http://matf.bg.ac.rs}{Matematički fakultet}} % Your faculty's name and URL, this is used in the title page and abstract, print it elsewhere with \facname
 
+
 \AtBeginDocument{
 \hypersetup{pdftitle=\ttitle} % Set the PDF's title to your title
 \hypersetup{pdfauthor=\authorname} % Set the PDF's author to your name
 \hypersetup{pdfkeywords=\keywordnames} % Set the PDF's keywords to your keywords
 }
+%---------------------------------------------------------------------
 
 \begin{document}
 
@@ -128,7 +125,7 @@ headsepline, % Uncomment to get a line under the header
 \begin{titlepage}
 \begin{center}
 
-\vspace*{.06\textheight}
+\vspace*{0.06\textheight}
 {\scshape\LARGE \univname\par} % University name
 {\scshape\LARGE \facname\par} % University name
 \vspace{1.5cm}
@@ -173,6 +170,7 @@ dr Nina Radojičić \\
 \vfill
 \end{center}
 \end{titlepage}
+
 
 %----------------------------------------------------------------------------------------
 %	DECLARATION PAGE
@@ -224,15 +222,6 @@ dr Nina Radojičić \\
 \newcommand{\file}[1]{\texttt{\bfseries#1}}
 \newcommand{\option}[1]{\texttt{\itshape#1}}
 
-
-\newcommand{\uniprot}{\textit{UniProt} }
-\newcommand{\uniprotkb}{\textit{UniProtKB} }
-\newcommand{\swissprot}{\textit{Swiss-Prot} }
-\newcommand{\trembl}{\textit{TrEMBL} }
-
-\newcommand{\kw}[1]{\textbf{\textit{KW: #1}}}
-\newcommand{\mf}[1]{\textbf{\textit{MF: #1}}}
-
 \newtheorem{definicija}{Definicija}
 
 \begin{abstract}
@@ -252,16 +241,24 @@ Coming soon!
 
 
 \end{acknowledgements}
+
 %
+%----------------------------------------------------------------------------------------
+%	LIST OF KEYWORDS
+%----------------------------------------------------------------------------------------
+
+
+
+
 %----------------------------------------------------------------------------------------
 %	LIST OF CONTENTS/FIGURES/TABLES PAGES
 %----------------------------------------------------------------------------------------
 
 \tableofcontents % Prints the main table of contents
 
-% \listoffigures % Prints the list of figures
+\listoffigures % Prints the list of figures
 
-% \listoftables % Prints the list of tables
+\listoftables % Prints the list of tables
 
 %----------------------------------------------------------------------------------------
 %	ABBREVIATIONS
@@ -307,7 +304,7 @@ Coming soon!
 %	DEDICATION
 %----------------------------------------------------------------------------------------
 
- \dedicatory{Tati, mami i Olgi\ldots} 
+\dedicatory{Tati, mami i Olgi\ldots} 
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - CHAPTERS
@@ -326,11 +323,10 @@ Coming soon!
 \include{Chapters/BioloskeOsnove}
 \include{Chapters/PredikcijaNeuredjenostiProteina}
 \include{Chapters/Aplikacija}
+\include{Chapters/Implementacija}
+\include{Chapters/Rezultati}
 \include{Chapters/Zakljucak}
 
-% \include{Chapters/Implementacija}
-
-%\include{Chapters/Rezultati}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES
