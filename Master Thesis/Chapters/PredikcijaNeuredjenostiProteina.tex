@@ -3,15 +3,33 @@
 \chapter{Predikcija neuređenosti proteina} % Main chapter title
 \label{predikcija} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-Kao što je navedeno u prethodnom poglavlju, neuređenost proteina se može, osim eksperimentalnog, određivati i računarski. Upravo o tom vidu određivanja, odnosno, predikcije, neuređenosti proteina govori ovo poglavlje. Najpre, biće detaljnije opisan računarski postupak. Nakon toga, biće priče o prediktorima, od kojih će pojedini biti detaljnije objašnjeni. Na kraju, ukratko, će biti predstavljena baza podataka DisProt i njen značaj u ovom radu.\\\\
-
-
+Razvitak istraživanja o neuređenim proteinima počinje oko 1978. godine, kada sa razvojem kristalografije X-zracima i spektroskopije nuklearnom magnetnom rezonancom, uspešno ukazuje na funkcionalne poremećaje u proteinima, čime istraživanje dobija na značaju. Tokom prvih godina, pojavljuju se mnogobrojni nazivi $"$osetljivi$"$,$"$reomorfični$"$,$"$mobilni$"$,$"$kameleonski$"$,$"$igrajući$"$ i drugi. Usled velikog broja termina koji se, i kasnije, koriste za opisivanje ovakvih proteina: prirodno/suštinski neuređeni, nesavijeni, denaturisani ili reomorfni proteini (eng.~{\em intrinsically disordered/ unfolded/ unstructured}), u ovom radu, biće korišćen samo kraći termin - neuređeni proteini. 
+Neuređeni proteini bitnu ulogu u određivanju ćelijskog odgovora na spoljašnje uticaje, transkripciju i translaciju, kao i savijanje i odvijanje ćelijskih makromolekula.
+Kao što je navedeno u prethodnom poglavlju, neuređenost proteina se može, osim eksperimentalnog, određivati i računarski. Upravo o tom vidu određivanja, odnosno, predikcije, neuređenosti proteina govori ovo poglavlje. Najpre, biće detaljnije opisan računarski postupak. Nakon toga, biće priče o prediktorima, od kojih će pojedini biti detaljnije objašnjeni. Na kraju, ukratko, će biti predstavljena baza podataka DisProt i njen značaj u ovom radu.~\cite{IDPsAtoZ,JKd, IDPTompa}\\\\
+Značaj pronalaska neuređenih proteina/regiona leži, pre svega, u tome što uočavanjem ovakvih regiona poboljšavamo analizu proteina i time izbegavamo poravnavanje uređenih i neuređenih proteinskih regiona čime se povećava preciznost analize sličnosti sekvenci. Još jedan bitan razlog je ušteda vremena pri upotrebi eksperimentalnih tehnika, jer dolazi do velikih gubitaka vremena na utvrđivanje strukture proteina koji je nema.~\cite{POverview, COverview} 
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
 \section{Prediktori}
+
+Više od sedamdeset prediktora razvijeno je od $1997.$ godine, od čega čak sedamnaest u periodu između $2010.$ i $2014.$. Ovi prediktori se mogu ugrubo podeliti u nekoliko kategorija, one bazirane na~\cite{PredictorsOverview}:
+\begin{enumerate}
+\item klasifikatorima mašinskog učenja,
+\item meta-pristupu (kombinovanjem predikcija više prediktora) i 
+\item fizičko-hemijskim karakteristikama.
+\end{enumerate}
+
+Svaki prediktor koristi različite koncepte, fizičko-hemijske karakteristike ili različite algoritme mašinskog učenja. Međutim, ni ove metode nisu najpouzdanije. Postoje dva glavna izvora nepouzdanosti predikcije neuređenosti koji dolaze iz:
+\begin{itemize}
+\item nepouzdanosti modela i
+\item nepouzdanosti podataka.
+\end{itemize}
+
+Pouzdanost (ili nepouzdanost) modela zavisi od odabranog modela. Odabir modela se vrši tako što iz skupa dostupnih modela bira onaj čija je preciznost veća u odnosu na ostale dostupne modele, testiranjem na zadatom skupu sekvenci.
+Nepouzdanost podataka se odnosi na  ~\cite{MolBioSyst}
+
 
 %-----------------------------------
 %	SUBSECTION 1
@@ -28,7 +46,23 @@ Kao što je navedeno u prethodnom poglavlju, neuređenost proteina se može, osi
 \subsection{s2D}
 \subsection{IUPred}
 \subsection{ESpritz}
+
+ESpritz detektuje neuređene regione iz primarne strukture, baziran je na efikasnom sistemu za predviđanje koji pronalazi neuređene regione. Određivanje neuređenosti iz niza aminokiselina je težak problem, ali ova metoda daje obećavajuće rezultate. Postoje dva razloga za to:
+\begin{itemize}
+\item  ako niz aminokiselina određuje strukturu onda nestrukturirani regioni aminokiselina mogu imati posebne osobine 
+\item neuređenost je bitna za mnogobrojne biološke funkcije, pa je prisutna očuvanost neuređenih proteina tokom evolucije. 
+\end{itemize}
+
+ESpritz, pri svom radu, koristi dvosmerne rekurentne neuronske mreže (engl. BRNN - Bidirectional recursive neural network) i treniran je na više različitih tipova neuređenosti. Algoritam uči kontekst informacija kroz rekurzivnu dinamiku mreže, smanjujući time broj parametara i implicitno izvlačeći informacije iz sekvence. ESpritz predstavlja efikasni metod za pojedinačne sekvence. Metod je baziran na sekvenci i ne koristi skupa izračunavanja kako bi pronašao poravnanja više sekvenci. Tipovi predviđanja neuređenosti nad kojima je ESpritz treniran su:
+\begin{itemize}
+\item Kratki x-zraci (eng. short x-ray): bazirano na nedostajućim atomima u strukturama koje su rešene sa X-zracima i nalaze se u PDB-a (eng. PDB - Protein Data Bank), ovaj tip predviđanja koristi se kod kraćih proteina. 
+\item Duži disprot: skup podataka koji se koristi za ovaj tip sadrži duže neuređene segmente u odnosu na prethodni tip. Bazira se na funkcionalnim atributima neuređenih regiona. Smatra se da je pronađen neuređeni region ako se utvrdilo barem jednom da je neki region neuređen. Svi ostali regioni se smatraju uređenim.
+\item NMR pokretljivost.
+\end{itemize}
+ESpritz određuje verovatnoću poremećaja za svaki region. ~\cite{ESpritzAFPD, ESpritzEP, ESpritz2, ESpritz3}
+
 \subsection{SEG}
+
 \subsection{Disopred2}
 
 %----------------------------------------------------------------------------------------
