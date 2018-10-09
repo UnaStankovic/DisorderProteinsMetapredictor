@@ -45,8 +45,13 @@ Nepouzdanost podataka se odnosi na  ~\cite{MolBioSyst}
 
 \subsection{s2D}
 \subsection{IUPred}
-\subsection{ESpritz}
 
+
+IUPred vrši previđanje neuređenosti proteina (eng. Intrinsically unstructured/disordered proteins - IUPs) sa loše definisanom tercijarnom strukturom iz sekvenci aminokiselina procenjujući njihovu energiju prilikom interakcija.
+Metod je baziran na fizičkom osnovu uređene/neuređene prirode proteina. Naime, globularni proteini prave veliki broj interakcija, čime se obezbeđuje stabilizujuća energija koja nadoknađuje određene gubitke prilikom savijanja proteina. Nasuprot njima, neuređeni proteini imaju specijalne regione koji nemaju sposobnost kreiranja interakcija. Pristup korišćen pri razvoju ovog prediktora se zasniva na statističkoj proceni mogućnosti polipeptida da formiraju takve stabilne veze (interakcije). Pretpostavka koju ovaj prediktor koristi je da se neuređene sekvence ne savijaju zbog nemogućnosti da ostvare dovoljno stabilne veze prilikom interakcija. Pokazalo se da je suma energije prilikom interakcija može da se proceni matematički na osnovu sastava aminokiselina, uzimajući u obzir da doprinos aminokiselina uređenosti zavisi od hemijskog tipa aminokiseline i njene sposobnosti da interaguje sa drugima. Prilikom predikcije, mogu se koristiti ugrađeni parametri koji su optimizovani za predviđanje kratkih ili dugačkih neuređenih regiona. ~\cite{IUPred, IUPred1, IUPred2, IUPred3}
+
+ 
+\subsection{ESpritz}
 ESpritz detektuje neuređene regione iz primarne strukture, baziran je na efikasnom sistemu za predviđanje koji pronalazi neuređene regione. Određivanje neuređenosti iz niza aminokiselina je težak problem, ali ova metoda daje obećavajuće rezultate. Postoje dva razloga za to:
 \begin{itemize}
 \item  ako niz aminokiselina određuje strukturu onda nestrukturirani regioni aminokiselina mogu imati posebne osobine 
