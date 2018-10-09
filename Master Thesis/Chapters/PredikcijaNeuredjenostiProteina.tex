@@ -43,7 +43,6 @@ SPOT-Disorder Predictor je razvijen da ima visoku efikasnost u predviđanju i kr
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
-
 \subsection{PONDR}
 PONDR prediktor vrši predikciju nad pojedinačnim sekvencama korišćenjem neuronskih mreža sa propagacijom unapred (eng. feedforward neural networks) koje koriste sekvence atributa nad prozorima od $9$ do $21$ aminokiseline. Uzima se prosek nad ovim prozorima, a potom se te vrednosti koriste pri treniranju neuronskih mreža tokom konstrukcije prediktora. Iste vrednosti se koriste za ulaze da bi se napravila predikcija. Prediktori neuronskih mreža se treniraju nad neponavljajućim skupovima uređenih i neuređenih sekvenci,a izlazi su brojevi između $0$ i $1$, koji se odvajaju na prozore od po $9$ aminokiselina. Ako vrednost regiona prevazilazi prag od $0.5$ smatra se da je region neuređen.
 
@@ -58,7 +57,6 @@ PONDR prediktor vrši predikciju nad pojedinačnim sekvencama korišćenjem neur
 %-----------------------------------
 %	SUBSECTION 4
 %-----------------------------------
-
 \subsection{IUPred}
 IUPred vrši previđanje neuređenosti proteina sa loše definisanom tercijarnom strukturom (eng. Intrinsically unstructured/disordered proteins - IUPs) na osnovu sekvenci aminokiselina procenjujući njihovu energiju prilikom interakcija. Metod se bazira na fizičkim osnovama uređene/neuređene prirode proteina. Naime, globularni proteini prave veliki broj interakcija, čime se obezbeđuje stabilizujuća energija koja nadoknađuje određene gubitke prilikom savijanja proteina. Nasuprot njima, neuređeni proteini imaju specijalne regione koji nemaju sposobnost kreiranja interakcija.\\\\
 
@@ -67,8 +65,7 @@ Pristup korišćen pri razvoju ovog prediktora se zasniva na statističkoj proce
 
 %-----------------------------------
 %	SUBSECTION 5
-%-----------------------------------
- 
+%----------------------------------- 
 \subsection{ESpritz}
 ESpritz detektuje neuređene regione primarne strukture i bazira se na efikasnom sistemu za predviđanje koji ih pronalazi. Određivanje neuređenosti iz niza aminokiselina je težak problem, ali ova metoda daje obećavajuće rezultate. Postoje dva razloga za to:
 \begin{itemize}
@@ -97,6 +94,8 @@ ESpritz određuje verovatnoću poremećaja za svaki region. ~\cite{ESpritzAFPD, 
 %-----------------------------------
 
 \subsection{Disopred2}
+
+DISOPRED2 je treniran na skupu od 750 neponavljajućih sekvenci struktura dobijenih na osnovu X-zraka. Neuređenost se prepoznaje kod onih delova koji se pojavljuju u podacima o sekvenci, ali imaju koordinate koje nedostaju na elektronskoj mapi gustine. Ovaj način ima svoje nesavršenosti koje se ogledaju u nesavršenosti metode kristalografije X-zracima kod koje se mogu javiti nedostaci. Iako nesavršen, ovaj način je najjednostavniji u nedostatku daljih eksperimentalnih analiza proteina. Ulazni vektor za svaki region se konstruiše iz profila sekvence simetričnim prozorom od po 15 pozicija. Podaci se koriste za treniranje linearnim potpornim vektorima (eng. SVM - support vector machine). ~\cite{DISOPRED}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
