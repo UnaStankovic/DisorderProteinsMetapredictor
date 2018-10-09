@@ -34,7 +34,9 @@ Nepouzdanost podataka se odnosi na  ~\cite{MolBioSyst}
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
-\subsection{SPINE-D/ SPOT-D}
+\subsection{SPOT-D}
+
+SPOT-Disorder Predictor je razvijen da ima visoku efikasnost u predviđanju i kratkih i dugih neuređenih regiona bez odvojenog treninga, bez obrzira na činjenicu da neuređeni regioni različitih veličina imaju različite sastave aminokiselina. SPOT-D je metod koji je nastao unapređivanjem metoda koji koristi tradicionalne neuralne mreže bazirane na prozorima nad svim testiranim skupovima bez odvajanja trening skupa na kratkim i dugim regionima. Utvrđeno je da je SPOT-D dovoljno precizan u odnosu na ostale metode.~\cite{SPOTD}
 
 
 %-----------------------------------
@@ -43,12 +45,27 @@ Nepouzdanost podataka se odnosi na  ~\cite{MolBioSyst}
 
 \subsection{PONDR}
 
+
+%-----------------------------------
+%	SUBSECTION 3
+%-----------------------------------
+
 \subsection{s2D}
+
+
+%-----------------------------------
+%	SUBSECTION 4
+%-----------------------------------
+
 \subsection{IUPred}
 IUPred vrši previđanje neuređenosti proteina sa loše definisanom tercijarnom strukturom (eng. Intrinsically unstructured/disordered proteins - IUPs) na osnovu sekvenci aminokiselina procenjujući njihovu energiju prilikom interakcija. Metod se bazira na fizičkim osnovama uređene/neuređene prirode proteina. Naime, globularni proteini prave veliki broj interakcija, čime se obezbeđuje stabilizujuća energija koja nadoknađuje određene gubitke prilikom savijanja proteina. Nasuprot njima, neuređeni proteini imaju specijalne regione koji nemaju sposobnost kreiranja interakcija.\\\\
 
 Pristup korišćen pri razvoju ovog prediktora se zasniva na statističkoj proceni mogućnosti polipeptida da formiraju takve stabilne veze (interakcije). Pretpostavka koja postoji je da se neuređene sekvence ne savijaju zbog nemogućnosti da ostvare dovoljno stabilne veze prilikom interakcija. Pokazalo se da je suma energije prilikom interakcija može da se proceni matematički na osnovu sastava aminokiselina, uzimajući u obzir da doprinos aminokiselina uređenosti zavisi od hemijskog tipa aminokiseline i njene sposobnosti da interaguje sa drugima. Prilikom predikcije, mogu se koristiti ugrađeni parametri koji su optimizovani za predviđanje kratkih ili dugačkih neuređenih regiona. ~\cite{IUPred, IUPred1, IUPred2, IUPred3}
 
+
+%-----------------------------------
+%	SUBSECTION 5
+%-----------------------------------
  
 \subsection{ESpritz}
 ESpritz detektuje neuređene regione primarne strukture i bazira se na efikasnom sistemu za predviđanje koji ih pronalazi. Određivanje neuređenosti iz niza aminokiselina je težak problem, ali ova metoda daje obećavajuće rezultate. Postoje dva razloga za to:
@@ -65,9 +82,20 @@ ESpritz, pri svom radu, koristi dvosmerne rekurentne neuronske mreže (engl. BRN
 \end{itemize}
 ESpritz određuje verovatnoću poremećaja za svaki region. ~\cite{ESpritzAFPD, ESpritzEP, ESpritz2, ESpritz3}
 
+
+%-----------------------------------
+%	SUBSECTION 6
+%-----------------------------------
+
 \subsection{SEG}
 
+
+%-----------------------------------
+%	SUBSECTION 7
+%-----------------------------------
+
 \subsection{Disopred2}
+
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
