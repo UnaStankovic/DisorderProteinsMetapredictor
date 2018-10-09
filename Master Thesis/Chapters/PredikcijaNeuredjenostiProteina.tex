@@ -45,8 +45,7 @@ SPOT-Disorder Predictor je razvijen da ima visoku efikasnost u predviđanju i kr
 %-----------------------------------
 
 \subsection{PONDR}
-
-
+PONDR prediktor vrši predikciju nad pojedinačnim sekvencama korišćenjem neuronskih mreža sa propagacijom unapred (eng. feedforward neural networks) koje koriste sekvence atributa nad prozorima od $9$ do $21$ aminokiseline. Uzima se prosek nad ovim prozorima, a potom se te vrednosti koriste pri treniranju neuronskih mreža tokom konstrukcije prediktora. Iste vrednosti se koriste za ulaze da bi se napravila predikcija. Prediktori neuronskih mreža se treniraju nad neponavljajućim skupovima uređenih i neuređenih sekvenci,a izlazi su brojevi između $0$ i $1$, koji se odvajaju na prozore od po $9$ aminokiselina. Ako vrednost regiona prevazilazi prag od $0.5$ smatra se da je region neuređen.
 
 
 %-----------------------------------
