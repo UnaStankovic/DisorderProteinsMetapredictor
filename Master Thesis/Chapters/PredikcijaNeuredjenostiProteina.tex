@@ -3,11 +3,11 @@
 \chapter{Predikcija neuređenosti proteina} % Main chapter title
 \label{predikcija} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-Razvitak istraživanja o neuređenim proteinima počinje oko 1978. godine, kada sa razvojem kristalografije X-zracima i spektroskopije nuklearnom magnetnom rezonancom, uspešno ukazuje na funkcionalne poremećaje u proteinima, čime istraživanje dobija na značaju. Tokom prvih godina, pojavljuju se mnogobrojni nazivi $"$osetljivi$"$,$"$reomorfični$"$,$"$mobilni$"$,$"$kameleonski$"$,$"$igrajući$"$ i drugi. Usled velikog broja termina koji se, i kasnije, koriste za opisivanje ovakvih proteina: prirodno/suštinski neuređeni, nesavijeni, denaturisani ili reomorfni proteini (eng.~{\em intrinsically disordered/ unfolded/ unstructured}), u ovom radu, biće korišćen samo kraći termin - neuređeni proteini. 
-Neuređeni proteini bitnu ulogu u određivanju ćelijskog odgovora na spoljašnje uticaje, transkripciju i translaciju, kao i savijanje i odvijanje ćelijskih makromolekula.
-Kao što je navedeno u prethodnom poglavlju, neuređenost proteina se može, osim eksperimentalnog, određivati i računarski. Upravo o tom vidu određivanja, odnosno, predikcije, neuređenosti proteina govori ovo poglavlje. Najpre, biće detaljnije opisan računarski postupak. Nakon toga, biće priče o prediktorima, od kojih će pojedini biti detaljnije objašnjeni. Na kraju, ukratko, će biti predstavljena baza podataka DisProt i njen značaj u ovom radu.~\cite{IDPsAtoZ,JKd, IDPTompa}\\\\
-Značaj pronalaska neuređenih proteina/regiona leži, pre svega, u tome što uočavanjem ovakvih regiona poboljšavamo analizu proteina i time izbegavamo poravnavanje uređenih i neuređenih proteinskih regiona čime se povećava preciznost analize sličnosti sekvenci. Još jedan bitan razlog je ušteda vremena pri upotrebi eksperimentalnih tehnika, jer dolazi do velikih gubitaka vremena na utvrđivanje strukture proteina koji je nema.~\cite{POverview, COverview} 
+Razvitak istraživanja o neuređenim proteinima počinje oko 1978. godine, kada sa razvojem kristalografije X-zracima i spektroskopije nuklearnom magnetnom rezonancom, uspešno ukazuje na funkcionalne poremećaje u proteinima, čime ova oblast dobija na značaju. Tokom prvih godina, pojavljuju se mnogobrojni nazivi $"$osetljivi$"$, $"$reomorfični$"$, $"$mobilni$"$, $"$kameleonski$"$, $"$igrajući$"$ i drugi. Usled velikog broja termina koji se, i kasnije, koriste za opisivanje ovakvih proteina: suštinski neuređeni, nesavijeni, denaturisani ili reomorfni proteini (eng.~{\em intrinsically disordered/ unfolded/ unstructured}), u ovom radu, biće korišćen samo kraći termin - neuređeni proteini. 
+Neuređeni proteini imaju bitnu ulogu u određivanju ćelijskog odgovora na spoljašnje uticaje, transkripciju i translaciju, kao i savijanje i odvijanje ćelijskih makromolekula.
+Kao što je navedeno u prethodnom poglavlju, neuređenost proteina se može, osim eksperimentalnog, određivati i računarski. Upravo o tom vidu predikcije, neuređenosti proteina govori ovo poglavlje. Najpre, biće detaljnije opisan računarski postupak kojim se vrši predikcija. Nakon toga, biće reči o prediktorima, od kojih će pojedini biti detaljnije objašnjeni. Na kraju će ukratko  biti predstavljena baza podataka DisProt i njen značaj u ovom radu~\cite{JKd, IDPsAtoZ, IDPTompa}.\\\\
 
+%Značaj pronalaska neuređenih proteina/regiona leži, pre svega, u tome što uočavanjem ovakvih regiona poboljšavamo analizu proteina i time izbegavamo poravnavanje uređenih i neuređenih proteinskih regiona čime se povećava preciznost analize sličnosti sekvenci. Još jedan bitan razlog je ušteda vremena pri upotrebi eksperimentalnih tehnika, jer dolazi do velikih gubitaka vremena na utvrđivanje strukture proteina koji je nema~\cite{POverview, COverview}.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
@@ -15,14 +15,14 @@ Značaj pronalaska neuređenih proteina/regiona leži, pre svega, u tome što uo
 
 \section{Prediktori}
 
-Više od sedamdeset prediktora razvijeno je od $1997.$ godine, od čega čak sedamnaest u periodu između $2010.$ i $2014.$. Ovi prediktori se mogu ugrubo podeliti u nekoliko kategorija, one bazirane na~\cite{PredictorsOverview}:
+Više od sedamdeset prediktora razvijeno je od $1997.$ godine, od čega čak sedamnaest u periodu između $2010.$ i $2014.$. Ovi prediktori se mogu ugrubo podeliti u nekoliko kategorija~\cite{PredictorsOverview}:
 \begin{enumerate}
-\item klasifikatorima mašinskog učenja,
-\item meta-pristupu (kombinovanjem predikcija više prediktora) i 
-\item fizičko-hemijskim karakteristikama.
+\item prediktori zasnovani na metodama mašinskog učenja,
+\item prediktori zasnovani na meta-pristupu (kombinovanjem predikcija više prediktora) i 
+\item prediktori zasnovani na fizičko-hemijskim karakteristikama.
 \end{enumerate}
 
-Svaki prediktor koristi različite koncepte, fizičko-hemijske karakteristike ili različite algoritme mašinskog učenja. Međutim, ni ove metode nisu najpouzdanije. Postoje dva glavna izvora nepouzdanosti predikcije neuređenosti koji dolaze iz:
+Kada je reč o prediktorima, možemo govoriti o njihovoj nepouzdanosti (eng. ~{\em  uncertainty}). Nepouzdanost, odnosno pouzdanost, prediktora odnosi se na meru poverenja koju imamo u rezultat dobijen korišćenjem prediktora. Postoje dva glavna izvora nepouzdanosti predikcije neuređenosti koji dolaze iz:
 \begin{itemize}
 \item nepouzdanosti modela i
 \item nepouzdanosti podataka.
@@ -37,15 +37,16 @@ Nepouzdanost podataka se odnosi na  ~\cite{MolBioSyst}
 %-----------------------------------
 \subsection{SPOT-D}
 
-SPOT-Disorder Predictor je razvijen da ima visoku efikasnost u predviđanju i kratkih i dugih neuređenih regiona bez odvojenog treninga, bez obrzira na činjenicu da neuređeni regioni različitih veličina imaju različite sastave aminokiselina. SPOT-D je metod koji je nastao unapređivanjem metoda koji koristi tradicionalne neuralne mreže bazirane na prozorima nad svim testiranim skupovima bez odvajanja trening skupa na kratkim i dugim regionima. Utvrđeno je da je SPOT-D jednako ili više precizan u odnosu na ostale metode. Ovaj metod oslikava prednosti kombinovanja LSTM (eng. Long Short Term Memory) neuronskih mreža sa dubokim dvosmernim rekurentnim neuronskim mrežama, kako bi se uočile interakcije između proteina.
-~\cite{SPOTD}
+SPOT-Disorder Predictor je razvijen da ima visoku efikasnost u predviđanju i kratkih i dugih neuređenih regiona bez odvojenog treninga, bez obzira na činjenicu da neuređeni regioni različitih veličina imaju različite sastave aminokiselina. SPOT-D je metod koji je nastao unapređivanjem metoda koji koristi tradicionalne neuronske mreže bazirane na prozorima nad svim testiranim skupovima bez odvajanja trening skupa na kratkim i dugim regionima. Utvrđeno je da je preciznost metoda SPOT-D uporediva u odnosu na ostale metode. Ovaj metod oslikava prednosti kombinovanja LSTM (eng.~{\em Long Short Term Memory}) neuronskih mreža sa dubokim dvosmernim rekurentnim neuronskim mrežama, kako bi se uočile interakcije između proteina
+~\cite{SPOTD}.
+
 
 
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
 \subsection{PONDR}
-PONDR prediktor vrši predikciju nad pojedinačnim sekvencama korišćenjem neuronskih mreža sa propagacijom unapred (eng. feedforward neural networks) koje koriste sekvence atributa nad prozorima od $9$ do $21$ aminokiseline. Uzima se prosek nad ovim prozorima, a potom se te vrednosti koriste pri treniranju neuronskih mreža tokom konstrukcije prediktora. Iste vrednosti se koriste za ulaze da bi se napravila predikcija. Prediktori neuronskih mreža se treniraju nad neponavljajućim skupovima uređenih i neuređenih sekvenci,a izlazi su brojevi između $0$ i $1$, koji se odvajaju na prozore od po $9$ aminokiselina. Ako vrednost regiona prevazilazi prag od $0.5$ smatra se da je region neuređen.
+PONDR prediktor vrši predikciju nad pojedinačnim sekvencama korišćenjem neuronskih mreža sa propagacijom unapred (eng. feedforward neural networks) koje koriste različite atribute nad prozorima dužine od $9$ do $21$ aminokiselina. Uzima se prosek vrednosti atributa nad ovim prozorima, a potom se te vrednosti koriste pri treniranju neuronskih mreža tokom konstrukcije prediktora. Iste vrednosti se koriste kao ulazni podaci prilikom testiranja. Prediktori neuronskih mreža se treniraju nad neredundantnim skupovima uređenih i neuređenih sekvenci, a izlazne vrednosti su brojevi između $0$ i $1$, koji se određuju za svaki region od po $9$ aminokiselina. Ako vrednost dodeljena nekom regionu prevazilazi prag od $0.5$ smatra se da je region neuređen.
 
 
 %-----------------------------------
@@ -59,28 +60,28 @@ PONDR prediktor vrši predikciju nad pojedinačnim sekvencama korišćenjem neur
 %	SUBSECTION 4
 %-----------------------------------
 \subsection{IUPred}
-IUPred vrši previđanje neuređenosti proteina sa loše definisanom tercijarnom strukturom (eng. Intrinsically unstructured/disordered proteins - IUPs) na osnovu sekvenci aminokiselina procenjujući njihovu energiju prilikom interakcija. Metod se bazira na fizičkim osnovama uređene/neuređene prirode proteina. Naime, globularni proteini prave veliki broj interakcija, čime se obezbeđuje stabilizujuća energija koja nadoknađuje određene gubitke prilikom savijanja proteina. Nasuprot njima, neuređeni proteini imaju specijalne regione koji nemaju sposobnost kreiranja interakcija.\\\\
+IUPred vrši previđanje neuređenosti proteina sa loše definisanom tercijarnom strukturom (eng. Intrinsically unstructured/disordered proteins - IUPs) na osnovu sekvenci aminokiselina procenjujući njihovu energiju prilikom interakcija. Metod se bazira na neuređenosti proteina. Naime, globularni proteini učestvuju u velikom broju interakcija, čime se obezbeđuje stabilizujuća energija koja nadoknađuje određene gubitke prilikom savijanja proteina. Nasuprot njima, neuređeni proteini imaju specijalne regione koji ne učestvuju u   interakcijama.\\\\
 
-Pristup korišćen pri razvoju ovog prediktora se zasniva na statističkoj proceni mogućnosti polipeptida da formiraju takve stabilne veze (interakcije). Pretpostavka koja postoji je da se neuređene sekvence ne savijaju zbog nemogućnosti da ostvare dovoljno stabilne veze prilikom interakcija. Pokazalo se da je suma energije prilikom interakcija može da se proceni matematički na osnovu sastava aminokiselina, uzimajući u obzir da doprinos aminokiselina uređenosti zavisi od hemijskog tipa aminokiseline i njene sposobnosti da interaguje sa drugima. Prilikom predikcije, mogu se koristiti ugrađeni parametri koji su optimizovani za predviđanje kratkih ili dugačkih neuređenih regiona. ~\cite{IUPred, IUPred1, IUPred2, IUPred3}
+Pristup korišćen pri razvoju ovog prediktora se zasniva na statističkoj proceni mogućnosti polipeptida da formiraju takve stabilne veze (interakcije). Pretpostavka koja postoji je da se neuređene sekvence ne savijaju zbog nemogućnosti da ostvare dovoljno stabilne veze prilikom interakcija. Pokazano  je da energija prilikom interakcija može da se proceni numerički na osnovu sastava aminokiselina, uzimajući u obzir da koliko će aminokiselinski sastav doprineti uređenosti zavisi od hemijskog tipa aminokiseline i njene sposobnosti da interaguje sa drugima. Prilikom predikcije, mogu se koristiti ugrađeni parametri koji su optimizovani za predviđanje kratkih ili dugačkih neuređenih regiona ~\cite{IUPred, IUPred1, IUPred2, IUPred3}.
 
 
 %-----------------------------------
 %	SUBSECTION 5
 %----------------------------------- 
 \subsection{ESpritz}
-ESpritz detektuje neuređene regione primarne strukture i bazira se na efikasnom sistemu za predviđanje koji ih pronalazi. Određivanje neuređenosti iz niza aminokiselina je težak problem, ali ova metoda daje obećavajuće rezultate. Postoje dva razloga za to:
+ESpritz detektuje neuređene regione primarne strukture i bazira se na efikasnom sistemu za predviđanje koji ih pronalazi. Određivanje neuređenosti, na osnovu niza aminokiselina koje čine protein, je težak problem, ali ova metoda daje obećavajuće rezultate. Postoje dva razloga za to:
 \begin{itemize}
 \item  ako niz aminokiselina određuje strukturu onda nestrukturirani regioni aminokiselina mogu imati drugačije osobine, 
 \item neuređenost je bitna za mnogobrojne biološke funkcije, pa je prisutna očuvanost neuređenih proteina tokom evolucije. 
 \end{itemize}
 
-ESpritz, pri svom radu, koristi dvosmerne rekurentne neuronske mreže (engl. BRNN - Bidirectional recursive neural network) i treniran je na više različitih tipova neuređenosti. Algoritam uči kontekst informacija kroz rekurzivnu dinamiku mreže, smanjujući time broj parametara i implicitno izvlačeći informacije iz sekvence. Ovo je efikasan metod za pojedinačne sekvence i bazira se na sekvenci, bez korišćenja skupih izračunavanja kako bi pronašao poravnanja više sekvenci. Tipovi predviđanja neuređenosti nad kojima je ESpritz treniran su:
+ESpritz, pri svom radu, koristi dvosmerne rekurentne neuronske mreže (engl. BRNN - Bidirectional recursive neural network) i treniran je na više različitih tipova neuređenosti. Algoritam uči kontekst informacija kroz rekurzivnu dinamiku mreže, smanjujući time broj parametara i implicitno izvlačeći informacije iz sekvence. Ovo je efikasan metod za pojedinačne sekvence i bazira se na informacijama iz primarne sekvence proteina. Tipovi predviđanja neuređenosti nad kojima je ESpritz treniran su:
 \begin{itemize}
 \item Kratki x-zraci (eng. short x-ray): bazirano na nedostajućim atomima u strukturama koje su rešene sa X-zracima i nalaze se u PDB-a (eng. PDB - Protein Data Bank), ovaj tip predviđanja koristi se kod kraćih proteina. 
 \item Duži disprot: skup podataka koji se koristi za ovaj tip sadrži duže neuređene segmente u odnosu na prethodni tip. Bazira se na funkcionalnim atributima neuređenih regiona. Smatra se da je pronađen neuređeni region ako se utvrdilo barem jednom da je neki region neuređen. Svi ostali regioni se smatraju uređenim.
 \item NMR pokretljivost.
 \end{itemize}
-ESpritz određuje verovatnoću poremećaja za svaki region. ~\cite{ESpritzAFPD, ESpritzEP, ESpritz2, ESpritz3}
+ESpritz određuje verovatnoću neuređenosti za svaki region u sekvenci ~\cite{ESpritzAFPD, ESpritzEP, ESpritz2, ESpritz3}.
 
 
 %-----------------------------------
@@ -96,10 +97,12 @@ ESpritz određuje verovatnoću poremećaja za svaki region. ~\cite{ESpritzAFPD, 
 
 \subsection{Disopred2}
 
-DISOPRED2 je treniran na skupu od 750 neponavljajućih sekvenci struktura dobijenih na osnovu X-zraka. Neuređenost se prepoznaje kod onih delova koji se pojavljuju u podacima o sekvenci, ali imaju koordinate koje nedostaju na elektronskoj mapi gustine. Ovaj način ima svoje nesavršenosti koje se ogledaju u nesavršenosti metode kristalografije X-zracima kod koje se mogu javiti nedostaci. Iako nesavršen, ovaj način je najjednostavniji u nedostatku daljih eksperimentalnih analiza proteina. Ulazni vektor za svaki region se konstruiše iz profila sekvence simetričnim prozorom od po 15 pozicija. Podaci se koriste za treniranje linearnim potpornim vektorima (eng. SVM - support vector machine). ~\cite{DISOPRED}
+DISOPRED2 je treniran na skupu od 750 neredundantnih sekvenci struktura dobijenih na osnovu X-zraka.  Neuređenost se prepoznaje kod onih regiona koji se pojavljuju u primarnoj sekvenci proteina, ali se ne pojavljuju na elektronskoj mapi gustine. Ovaj način ima svoje mane koje se ogledaju u nesavršenosti metode kristalografije X-zracima kod koje se mogu javiti nedostaci. Iako nije idealan, ovaj način je najjednostavniji u nedostatku daljih eksperimentalnih analiza proteina. Ulazni vektor za svaki region se konstruiše iz profila sekvence simetričnim prozorom od po 15 pozicija. Podaci se koriste za treniranje  metodom potpornih vektora (eng. SVM - support vector machine) ~\cite{DISOPRED}.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 
 \section{Baza podataka DisProt}
+
+
