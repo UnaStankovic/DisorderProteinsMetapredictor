@@ -1,6 +1,10 @@
+import eventlet
 import socketio
 
 sio = socketio.Server()
+app = socketio.WSGIApp(sio, static_files={
+    '/': {'content_type': 'text/html', 'filename': 'index.html'}
+})
 
 @sio.event
 def connect(sid, environ):
@@ -14,15 +18,5 @@ def my_message(sid, data):
 def disconnect(sid):
     print('disconnect ', sid)
 
-
-from flask import Flask
-app = Flask(__name__)
-
-@app.route("/")
-def hello():
-    return "Hello World!"
-
-app = socketio.WSGIApp(sio, app)
-
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    eventlet.wsgi.server(eventlet.listen(('', 5000)), app)

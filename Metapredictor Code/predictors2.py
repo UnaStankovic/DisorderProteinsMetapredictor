@@ -47,8 +47,23 @@ def pondr(sequence, url):
     response = br.submit()
     #print(response.read())
     soup = BeautifulSoup(response.read(), features='html5lib')
-    print(soup.prettify())
-    return soup
+    #print(soup.prettify())
+    soup = soup.prettify()
+    #[0-9]+\s+([A-Z]+\s+)+(D+\s*)+
+    result = re.findall("VLXT.*", soup)
+    #we don't need a first one because it is not sequence
+    result = result[1:]
+    predicted = []
+    for r in result:
+        pred = r[6:]
+        predicted.append(pred)
+    total = []
+    for i in predicted:
+        total += i
+    seq = [c for c in sequence]
+    rez = (seq, total)
+    print(rez)
+    return rez
 
 #DONE
 #python3 iupred2a.py P53_HUMAN.seq long
@@ -76,7 +91,7 @@ def iupred2():
       predicted.append(pred)
     rez = (aa, predicted)
     #print(rez[0][0], rez[1][0])
-    print(rez)
+    #print(rez)
     return rez
 
 #SPOTD fasta format
@@ -136,10 +151,10 @@ def main():
     URL_SPOTD = "http://sparks-lab.org/server/SPOT-disorder/"
     URL_ESPRITZ = "http://protein.bio.unipd.it/espritz/"
     URL_CSPRITZ = "http://protein.bio.unipd.it/cspritz/"
-    #pondr(sequence_pondr, URL_PONDR)
-    iupred2()
-    #spotd(sequence, URL_SPOTD)
-    #espritz(sequence, URL_ESPRITZ)
+    #pondr(sequence_pondr, URL_PONDR) #DONE
+    #iupred2() #DONE
+    #spotd(sequence, URL_SPOTD) 
+    espritz(sequence, URL_ESPRITZ)
     #cspritz(sequence, URL_CSPRITZ)
 
     #when all done adjust to multiple sequences

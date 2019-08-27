@@ -18,5 +18,5 @@ class iupred2(Predictor):
             self.calculated.append(pred)
         rez = (aa, self.calculated)
         #print(rez[0][0], rez[1][0])
-        print(rez)
+        #print(rez)
         return rez

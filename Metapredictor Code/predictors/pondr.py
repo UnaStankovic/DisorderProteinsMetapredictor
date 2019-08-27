@@ -34,17 +34,32 @@ VLXT                                         DDDDDDD  DDDDDDDDD
 151      KRIVQRIKDF LRNLVPRTES
 VLXT     DDDDDDDDDD DDDDDDDDDD"""
 #PONDR
-class spotd(Predictor):
+class pondr(Predictor):
     def calculate(self, url, sequence):
         global br
-        br.open(url)
-        br.form = list(br.forms())[1] 
-        br['ProteinName'] = "test"
-        br['Sequence'] = sequence 
-        response = br.submit()
-        #print(response.read())
-        soup = BeautifulSoup(response.read(), features='html5lib')
-        print(soup.prettify())
-        return soup
+      br.open(url)
+      br.form = list(br.forms())[1] 
+      br['ProteinName'] = "test"
+      br['Sequence'] = sequence 
+      response = br.submit()
+      #print(response.read())
+      soup = BeautifulSoup(response.read(), features='html5lib')
+      #print(soup.prettify())
+      soup = soup.prettify()
+      #[0-9]+\s+([A-Z]+\s+)+(D+\s*)+
+      result = re.findall("VLXT.*", soup)
+      #we don't need a first one because it is not sequence
+      result = result[1:]
+      predicted = []
+      for r in result:
+          pred = r[6:]
+          predicted.append(pred)
+      total = []
+      for i in predicted:
+          total += i
+      seq = [c for c in sequence]
+      rez = (seq, total)
+      print(rez)
+      return rez
 
 
