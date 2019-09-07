@@ -13,7 +13,7 @@ function Handlechange()
 }
 
 var submit = document.getElementById('submit')
-submit.addEventListener("click", generate_data)
+submit.addEventListener("click", send_data)
 
 // packing what is supposed to be sent when clicked on submit
 function generate_data(){
@@ -26,8 +26,8 @@ function generate_data(){
     }
 
     var json = {sequence: sequence, disprot_id: disprot_id, filename: fileinput.value}
-    console.log(json)
-
+    //console.log(json)
+    
     return json
 }
 
@@ -40,13 +40,12 @@ socket.on('message', data => {
     console.log(data);
   });
 
-  function send_data() {
+function send_data() {
     const json = generate_data();
     console.log('Sending to server:');
-    console.log(json);
-  
+    //console.log(json);
     socket.emit('message', json);
-  }
+}
 
   
 socket.on('connect', () => {

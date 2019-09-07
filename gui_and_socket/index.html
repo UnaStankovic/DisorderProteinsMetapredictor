@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Protein Structure Prediction Metapredictor</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
+        
+        <link rel="stylesheet" type='text/css' href="style.css">
+    </head>
+    <body>
+        <div id="header">
+            <h1>Protein Structure Prediction Metapredictor</h1>
+            <p>A predictor that uses a method of consensus to determine if the protein is disordered or not.</p>
+        </div>
+
+        <div id='panel'>
+            <div id="disprot" class='divs'>
+                <label for='disprot_id' title="If you enter Disport ID, you will get comparison with experimentally determined disorder.">DisProt database ID (optional):</label>
+                <input id='disprot_id' type='text'>
+            </div>
+            <div id='seq_panel'>
+                <div id="sequence_panel_left" class='divs'>
+                    <label for="sequence">Enter the AminoAcid sequence:</label>
+                    <br>
+                    <textarea type="text" id="sequence"></textarea>
+                </div>
+                <div id='sequence_panel_right'>
+                    <span><b> OR </b></span>
+                    <div class='button' onclick="HandleBrowseClick();">Browse</div>
+                    <input type="file" id="browse" name="fileupload" style="display: none" onChange="Handlechange();"/>
+                    <span id='filename'>Choose a .fasta file from your files.</span>
+                </div>
+            </div>
+            <div id="list_predictors" class='divs'>
+                <h3>List of predictors being used:</h3>
+                <p>For more information click on  predictor name.</p>
+                <ol>
+                    <li><a href='http://sparks-lab.org/server/SPOT-disorder/'>SPOT-D</a></li>
+                    <li><a href='http://bioinf.cs.ucl.ac.uk/web_servers/psipred_server/disopred_overview/'>DISOPRED</a></li>
+                    <li><a href='http://www.pondr.com/cgi-bin/pondr.cgi'>PONDR</a></li>
+                    <li><a href='https://iupred2a.elte.hu/plot'>IUPRED2</a></li>
+                    <li> <a href='http://protein.bio.unipd.it/espritz/'>ESPRITZ</a></li>
+                </ol>
+            </div>
+            <div id="bottom">
+                <p>The analysis itself might take a while. Be patient.</p>
+                <div class='button' id='submit' onclick='show_loader()'>Submit</div>
+            </div>
+        </div>
+        <div id='loader_panel'>
+            <div id='loader'></div>
+        </div>
+        <div id='results_div'>
+            <div class="predictors-list">
+                <p style="margin-bottom: 6px">Position</p>
+            </div>
+        </div>
+        <div id='footer'>
+            <p>Made by Una Stanković &copy; 2019</p>
+        </div>
+
+        <script src="sock_cli.js"></script>
+        <script src="loader.js"></script>
+        <script src='results.js'></script>
+    </body>
+</html>
