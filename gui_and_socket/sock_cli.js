@@ -10,7 +10,6 @@ function HandleBrowseClick()
 }
 function Handlechange()
 {
-    
     var textinput = document.getElementById("filename");
     textinput.textContent = fileinput.value;
 }
@@ -24,14 +23,14 @@ fileinput.addEventListener('change', function() {
 })
 
 var submit = document.getElementById('submit')
-submit.addEventListener("click", send_data)
+submit.addEventListener("click", sendData)
 
 // packing what is supposed to be sent when clicked on submit
-function generate_data(){
-    var AA_sequence = txtSequence.value;
+function generateData(){
+    var AASequence = txtSequence.value;
 
-    if(AA_sequence != ""){
-        sequence = AA_sequence
+    if(AASequence != ""){
+        sequence = AASequence
     }else{
         sequence = ""
     }
@@ -51,20 +50,45 @@ socket.on('message', data => {
   });
 
 socket.on('disprotinfo', data => {
-    console.log('Got from server: ');
+    console.log('Got from server.');
     console.log(data);
+
   });
 
 socket.on('predicted', data => {
-    console.log('Got from server: ');
+    console.log('Got from server.');
     console.log(data);
-    for (const pred of data) {
-        create_predictor(pred.result, pred.name);
+    createScale(data.sequence);
+    for (const pred of data.predictors) {
+        createPredictor(pred.result, pred.name);
     }
-    hide_loader()
+    hideLoader(); 
+    createConsensus(data.consensus.result);
+    addMetrics(data.metrics);
+    addDetailedMetrics(data.partial_metrics);
 });
 
 
+function sendData() {
+    //txtSequence.value == "" ||
+    if (txtDisprotId.value == ""){
+        alert("You must enter the DisProt id!");
+    }
+    else{
+        showLoader()
+        const json = generateData();
+        console.log('Sending to server.');
+        socket.emit('message', json);
+    }
+}
+
+  
+socket.on('connect', () => {
+    console.log('Connected to server');
+});
+
+
+  /*
 socket.on('iupred2_predict', data => {
     console.log('Got from server: ');
     console.log(data);
@@ -81,7 +105,7 @@ socket.on('pondr_predict', data => {
     console.log(data);
     create_predictor(data, "PONDR");
 });
-/*
+
 socket.on('espritz_predict', data => {
     console.log('Got from server: ');
     console.log(data);
@@ -93,14 +117,3 @@ socket.on('cspritz_predict', data => {
     create_predictor(data, "CSPRITZ")
 });
 */
-function send_data() {
-    const json = generate_data();
-    console.log('Sending to server:');
-    //console.log(json);
-    socket.emit('message', json);
-}
-
-  
-socket.on('connect', () => {
-    console.log('Connected to server');
-  });

@@ -2,10 +2,11 @@ from predictors.predictor import Predictor
 from predictors.iupred2 import iupred2
 from predictors.spotd import spotd
 from predictors.pondr import pondr
+from predictors.disembl import disembl
 #from predctors.espritz import espritz
 #from predictors.cspritz import cspritz
 
-
+#DONE
 def iupred2_predict(sequence):
     p = iupred2(sequence)
     return p.calculate()
@@ -16,6 +17,10 @@ def spotd_predict(sequence):
 
 def pondr_predict(sequence):
     p = pondr(sequence)
+    return p.calculate()
+
+def disembl_predict(sequence):
+    p = disembl(sequence)
     return p.calculate()
 """
 def cspritz_predict(sequence):

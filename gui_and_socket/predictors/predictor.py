@@ -2,7 +2,6 @@ class Predictor:
     def __init__(self, sequence):
         self.sequence = sequence
         self.calculated = []
-        print('Sequence loaded')
 
     def calculate(self):
         pass # Store result in self.calculated in form [aa1_prediction, aa2_prediction, aa3_prediction, ...]

@@ -1,24 +1,6 @@
-let results_div = document.getElementById('results_div');
+let resultsDiv = document.getElementById('results_div');
 
-
-
-let predictors = ["iupred2", "pondr", "spotd", "espritz", "cspritz"]
-let sequence = "MSEPKAIDPKLSTTDRVVKAVPFPPSHRLTAKEVFDNDGKPRVDILKAHLMKEGRLEESV\
-ALRIITEGASILRQEKNLLDIDAPVTVCGDIHGQFFDLMKLFEVGGSPANTRYLFLGDYV\
-DRGYFSIECVLYLWALKILYPKTLFLLRGNHECRHLTEYFTFKQECKIKYSERVYDACMD\
-AFDCLPLAALMNQQFLCVHGGLSPEINTLDDIRKLDRFKEPPAYGPMCDILWSDPLEDFG\
-NEKTQEHFTHNTVRGCSYFYSYPAVCEFLQHNNLLSILRAHEAQDAGYRMYRKSQTTGFP\
-SLITIFSAPNYLDVYNNKAAVLKYENNVMNIRQFNCSPHPYWLPNFMDVFTWSLPFVGEK\
-VTEMLVNVLNICSDDELGSEEDGFDGATAAARKEVIRNKIRAIGKMARVFSVLREESESV\
-LTLKGLTPTGMLPSGVLSGGKQTLQSATVEAIEADEAIKGFSPQHKITSFEEAKGLDRIN\
-ERMPPRRDAMPSDANLNSINKALTSETNGTDSNGSNSSNIQ"
-console.log(sequence.length)
-
-// create_predictor(sequence, 'Sequence');
-//create_predictor(sequence, 'IUPRED2');
-//create_predictor(sequence, 'IUPRED2');
-
-function create_scale(sequence) {
+function createScale(sequence) {
     const scaleWrap = document.createElement('div');
     scaleWrap.classList.add('scale-wrap');
 
@@ -27,31 +9,31 @@ function create_scale(sequence) {
 
     for(let i=0; i < sequence.length; i++){
 
-        const scale_el = document.createElement('span');
-        const scale_el_wrap = document.createElement('span');
+        const scaleEl = document.createElement('span');
+        const scaleElWrap = document.createElement('span');
 
-        const aa_symbol = document.createElement('span');
-        const aa_wrap = document.createElement('span');
+        const aaSymbol = document.createElement('span');
+        const aaWrap = document.createElement('span');
 
-        aa_symbol.classList.add('aa');
-        aa_symbol.classList.add('sequence');
-        aa_wrap.classList.add('aa-wrap');
-        aa_symbol.innerText = sequence[i];
+        aaSymbol.classList.add('aa');
+        aaSymbol.classList.add('sequence');
+        aaWrap.classList.add('aa-wrap');
+        aaSymbol.innerText = sequence[i];
 
-        scale_el_wrap.classList.add('scale-el-wrap');
-        scale_el.classList.add('scale-el');
-        scale_el.innerHTML = i;
+        scaleElWrap.classList.add('scale-el-wrap');
+        scaleEl.classList.add('scale-el');
+        scaleEl.innerHTML = i+1;
 
-        scale_el_wrap.appendChild(scale_el);
-        scaleWrap.appendChild(scale_el_wrap);
+        scaleElWrap.appendChild(scaleEl);
+        scaleWrap.appendChild(scaleElWrap);
 
-        aa_wrap.appendChild(aa_symbol);
-        predictorWrap.appendChild(aa_wrap);
+        aaWrap.appendChild(aaSymbol);
+        predictorWrap.appendChild(aaWrap);
 
     }
 
     scaleWrap.style.width = `${sequence.length * 30 + 110}px`;
-    results_div.appendChild(scaleWrap);
+    resultsDiv.appendChild(scaleWrap);
     const predList = document.querySelector('.predictors-list');
     const predictorLabel = document.createElement('div');
     predictorLabel.classList.add('predictor-label');
@@ -59,43 +41,159 @@ function create_scale(sequence) {
     predList.appendChild(predictorLabel);
 
     predictorWrap.style.width = `${sequence.length * 30 + 110}px`;
-    results_div.appendChild(predictorWrap);
+    resultsDiv.appendChild(predictorWrap);
 }
 
-function create_predictor(sequence, pred_name){
+function createPredictor(sequence, predName){
     let name = document.createElement('h2');
     let pom = 0;
-
+    
     const predictorWrap = document.createElement('div');
     predictorWrap.classList.add('predictor-wrap');
     
-    console.log(sequence.length)
     for(let i=0; i < sequence.length; i++){
 
-        const aa_symbol = document.createElement('span');
-        const aa_wrap = document.createElement('span');
+        const aaSymbol = document.createElement('span');
+        const aaWrap = document.createElement('span');
 
-        aa_symbol.classList.add('aa');
-        aa_wrap.classList.add('aa-wrap');
-        aa_symbol.innerText = sequence[i];
+        aaSymbol.classList.add('aa');
+        aaWrap.classList.add('aa-wrap');
+        aaSymbol.innerText = sequence[i];
 
         if (sequence[i] === 'D') {
-            aa_symbol.classList.add('disordered');
+            aaSymbol.classList.add('disordered');
         } else {
-            aa_symbol.classList.add('ordered');
+            aaSymbol.classList.add('ordered');
         }
 
-        aa_wrap.appendChild(aa_symbol);
-        predictorWrap.appendChild(aa_wrap);
+        aaWrap.appendChild(aaSymbol);
+        predictorWrap.appendChild(aaWrap);
 
     }
 
     const predList = document.querySelector('.predictors-list');
     const predictorLabel = document.createElement('div');
     predictorLabel.classList.add('predictor-label');
-    predictorLabel.innerHTML = pred_name // Predictor Name
+    predictorLabel.innerHTML = predName // Predictor Name
     predList.appendChild(predictorLabel);
 
     predictorWrap.style.width = `${sequence.length * 30 + 110}px`;
-    results_div.appendChild(predictorWrap);
+    resultsDiv.appendChild(predictorWrap);
+}
+
+function createConsensus(cons){
+    let name = document.createElement('h2');
+    let pom = 0;
+
+    const predictorWrap = document.createElement('div');
+    predictorWrap.classList.add('predictor-wrap');
+    
+    for(let i=0; i < cons.length; i++){
+
+        const aaSymbol = document.createElement('span');
+        const aaWrap = document.createElement('span');
+        const aaText = document.createElement('span');
+
+        aaSymbol.classList.add('aa');
+        aaText.classList.add('aa-consensus');
+        aaWrap.classList.add('aa-wrap');
+        aaWrap.classList.add('consensus-wrap');
+        aaText.innerText = cons[i];
+
+        aaSymbol.classList.add('consensus-h');
+        aaSymbol.style.height = (cons[i] * 100) + "%";
+    
+        aaWrap.appendChild(aaSymbol);
+        aaWrap.appendChild(aaText);
+        predictorWrap.appendChild(aaWrap);
+
+    }
+
+    const predList = document.querySelector('.predictors-list');
+    const predictorLabel = document.createElement('div');
+    predictorLabel.classList.add('predictor-label');
+    predictorLabel.innerHTML = "Consensus" 
+    predList.appendChild(predictorLabel);
+    predictorWrap.style.width = `${cons.length * 30 + 110}px`;
+    resultsDiv.appendChild(predictorWrap);   
+}
+
+function addMetrics(metrics){
+    const wrap = document.createElement('div');
+    wrap.id = "metrics";
+    heading = document.createElement('h2');
+    heading.innerHTML = "Metrics";
+    wrap.appendChild(heading);
+    for(i = 0; i < metrics.length; i++){
+        p = document.createElement('p');
+        p.innerHTML = metrics[i].name + ' : ' + metrics[i].result;
+        //console.log(metrics[i]);
+        wrap.appendChild(p);
+    }
+    resultsDiv.appendChild(wrap);
+    addConsensusImage();
+}
+
+function addConsensusImage(){
+    const wrap = document.createElement('div');
+    wrap.id = "imageDiv";
+    const img = document.createElement('img');
+    img.alt = "consensus";
+    img.src = 'predicted.png';
+    img.style.marginTop = "20px";
+    wrap.appendChild(img);
+    resultsDiv.appendChild(wrap);
+   
+}
+
+function addDetailedMetrics(partialMetrics){
+    const wrap = document.createElement('div');
+    wrap.id = "detailed-metrics";
+    heading = document.createElement('h2');
+    heading.innerHTML = "Detailed metrics";
+    wrap.appendChild(heading);
+    metricsTable = document.createElement('table');
+
+    // Adding first row
+    var tr = document.createElement('tr');
+    metrics = ["Number of predictors/Metrics", "Accuracy", "Precision", "Recall", "F1"];
+    for (m in metrics){
+        var th = document.createElement('th');
+        th.innerHTML = metrics[m];
+        tr.appendChild(th);
+    }
+    metricsTable.appendChild(tr);
+
+    // Adding data 
+    for(i in partialMetrics){
+        var tr = document.createElement('tr');
+        var td = document.createElement('td');
+        td.innerHTML = i;
+        tr.appendChild(td);
+        for(j=0; j < 4; j++){
+            var td = document.createElement('td');
+            td.innerHTML = partialMetrics[i][j];
+            tr.appendChild(td);
+        }
+        metricsTable.appendChild(tr);
+    }
+    wrap.appendChild(metricsTable)
+    resultsDiv.appendChild(wrap);
+    addReloadButton();
+}
+
+function addReloadButton(){
+    const wrap = document.createElement('div');
+    wrap.id = "reloadDiv";
+    const btn = document.createElement('div');
+    btn.id = "reload";
+    btn.classList = 'button';
+    btn.innerHTML = "Run another analysis";
+    btn.addEventListener("click", clearResults);
+    wrap.appendChild(btn);
+    resultsDiv.appendChild(wrap);
+}
+
+function clearResults(){
+    window.location.reload(false); 
 }

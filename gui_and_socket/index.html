@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Protein Structure Prediction Metapredictor</title>
+        <title>Protein Disorder Metapredictor</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
@@ -10,13 +10,70 @@
     </head>
     <body>
         <div id="header">
-            <h1>Protein Structure Prediction Metapredictor</h1>
+            <h1>Protein Disorder Metapredictor</h1>
             <p>A predictor that uses a method of consensus to determine if the protein is disordered or not.</p>
         </div>
-
+        <nav>
+            <div id ='about_btn' class='navbar'>
+                About
+            </div>
+            <div id='instructions_btn' class='navbar'>
+                Instructions
+            </div>
+            <div id='predictors_btn' class='navbar'>
+                Predictors
+            </div>
+        </nav>
+        
+        <div id='about' class='tab'>
+            <h2>About the project</h2>
+            <p>This project is a part of the master thesis created by <i>Una Stanković</i> at the <i>Faculty of Mathematics, University of Belgrade</i>.<br><br>
+                The main goal of this program is to make a consensus about whether the structure of the protein is <b>disordered</b> or not.
+            Various predictors were used to do the consensus and their descriptions, in detail, can be found on predictor pages.
+            Prediction of the protein structure is very important in the field of <i>bioinformatics</i> today and through computational analysis
+        scientists are able to, in a faster way, determine if the disorder is present in the protein sequence and where such disorder happened.<br><br>
+        This program is helping compare such computational predictors outputs and provide insights into the decisions made by predictors, as well as visualize the given consensus. 
+        Apart from that, various important metrics' values are given to provide even more insight into the results. Metrics used are:
+        <ul>
+            <li>Accuracy</li>
+            <li>Precision</li>
+            <li>Recall</li>
+            <li>F-measure</li>
+        </ul>
+        For the consensus, each predictor has an equal weight although it is planned to give a possibility of providing weights to the predictors.
+        Moreover, the bigger number of predictors can be added thanks to the structure of this program. (This is certainly not an easy thing to do since most of the predictors provide no API or any easy way to create communication channel.) </p>
+        </div>
+        <div id='instructions' class='tab'>
+            <h2>Instructions</h2>
+            <p><b>TLDR</b> In order to run the program, enter the DisProt id and the sequence (copied from someplace or in a form of a .fasta file by pressing the browse button) and press the submit button. <br><br>
+                <b>DisProt</b> database contains information about experimentally determined disorder of protein regions as well as the proofs of such experiments.
+                <i>DisProt id</i> of the sequence is necessary in order to get metrics. Experimentally determined disorder will be compared with the predictors' outputs. 
+                Next step to do is to choose a sequence from .fasta file, or to enter it into the text area below. (If the sequence is entered through file it will be shown in a text area.) 
+                The final step is to click the submit button which will send the results to the server and retrieve the information about disordered regions and calculated consensus.
+                In order to run another analysis at the end of the results page there is a "Run another analysis" button.
+            </p>
+        </div>
+        
+        <div id='predictors' class='tab'>
+            <h2>Predictors</h2>
+            <p>
+                Various predictors were used to create consensus:
+                <ul>
+                    <li><a href='https://iupred2a.elte.hu/plot'>IUPRED2</a></li>
+                    <li><a href='http://www.pondr.com/cgi-bin/pondr.cgi'>PONDR</a></li>
+                    <li><a href='http://dis.embl.de/'>DISEMBL:</a>
+                        <ol>Loops/Coils</ol>
+                        <ol>HotLoops</ol>
+                        <ol>Rem465</ol>
+                    </li>
+                    <li><a href='http://sparks-lab.org/server/SPOT-disorder/'>SPOTD*</a></li>
+                </ul>
+                <small>*SPOTD predictor is very slow and depends on its' server, to use it uncomment "spotd" lines in the code and send it in predictors.</small>
+            </p>
+        </div>
         <div id='panel'>
             <div id="disprot" class='divs'>
-                <label for='disprot_id' title="If you enter Disport ID, you will get comparison with experimentally determined disorder.">DisProt database ID (optional):</label>
+                <label for='disprot_id' title="When you enter Disport ID, you will get comparison with experimentally determined disorder as well as the metrics.">DisProt database ID:</label>
                 <input id='disprot_id' type='text'>
             </div>
             <div id='seq_panel'>
@@ -34,18 +91,22 @@
             </div>
             <div id="list_predictors" class='divs'>
                 <h3>List of predictors being used:</h3>
-                <p>For more information click on  predictor name.</p>
+                <p>Predictors' names contain links to official pages.</p>
                 <ol>
-                    <li><a href='http://sparks-lab.org/server/SPOT-disorder/'>SPOT-D</a></li>
-                    <li><a href='http://bioinf.cs.ucl.ac.uk/web_servers/psipred_server/disopred_overview/'>DISOPRED</a></li>
-                    <li><a href='http://www.pondr.com/cgi-bin/pondr.cgi'>PONDR</a></li>
                     <li><a href='https://iupred2a.elte.hu/plot'>IUPRED2</a></li>
-                    <li> <a href='http://protein.bio.unipd.it/espritz/'>ESPRITZ</a></li>
+                    <li><a href='http://www.pondr.com/cgi-bin/pondr.cgi'>PONDR</a></li>
+                    <li><a href='http://dis.embl.de/'>DISEMBL:</a>
+                        <ol>Loops/Coils</ol>
+                        <ol>HotLoops</ol>
+                        <ol>Rem465</ol>
+                    </li>
+                    <li><a href='http://sparks-lab.org/server/SPOT-disorder/'>SPOTD*</a></li>
                 </ol>
+            <small>*SPOTD predictor is very slow and depends on their server, to use it uncomment "spotd" lines in the code and send it in predictors.</small>
             </div>
             <div id="bottom">
                 <p>The analysis itself might take a while. Be patient.</p>
-                <div class='button' id='submit' onclick='show_loader()'>Submit</div>
+                <div class='button' id='submit'>Submit</div>
             </div>
         </div>
         <div id='loader_panel'>
@@ -56,6 +117,7 @@
                 <p style="margin-bottom: 6px">Position</p>
             </div>
         </div>
+    
         <div id='footer'>
             <p>Made by Una Stanković &copy; 2019</p>
         </div>

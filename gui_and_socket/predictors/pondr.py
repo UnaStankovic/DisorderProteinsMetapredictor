@@ -2,9 +2,9 @@ from predictors.predictor import Predictor
 import mechanize
 from bs4 import BeautifulSoup
 import re
+from sock_serv import shortened_sequence
 
 br = mechanize.Browser()
-
 #CREATING A CONNECTION TO PREDICTOR, SUBMITTING THE SEQUENCE AND GETTING THE RESULT
 """===============================VLXT NNP STATISTICS================================
 Predicted residues: 170                 Number Disordered Regions: 5
@@ -45,13 +45,10 @@ class pondr(Predictor):
       br['ProteinName'] = "test"
       br['Sequence'] = self.sequence 
       response = br.submit()
-      #print(response.read())
       soup = BeautifulSoup(response.read(), features='html5lib')
-      #print(soup.prettify())
       soup = soup.prettify()
-      #[0-9]+\s+([A-Z]+\s+)+(D+\s*)+
       result = re.findall("VLXT\t\s.*", soup)
-      #we don't need a first one because it is not sequence
+      # We don't need a first one because it is not sequence
       result = result[1:]
       predicted = []
       for r in result:
@@ -63,20 +60,13 @@ class pondr(Predictor):
         total += i
       old = len(total)
       
-      pom = ''.join(self.sequence.split("\n")[1:])
-      print(old)
-      print(self.sequence)
+      pom = shortened_sequence(self.sequence)
       if(old < len(self.sequence)):
         for i in range(0,len(pom) - old):
           total.append(" ")
-      print(total)
       total = [x if x != ' ' else '-' for x in total ]
       
       self.calculated = total
-      print(self.calculated)   
-      #seq = [c for c in sequence]
-      #rez = (seq, total)
-      #print(rez)
       return self.calculated
 
 

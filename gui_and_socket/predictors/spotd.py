@@ -4,21 +4,35 @@ from bs4 import BeautifulSoup
 import re
 import requests, zipfile, io
 import urllib
+import time
+import threading
 
 br = mechanize.Browser()
+#DONE BUT WORKING VERY SLOW 
+def parse_result(text):
+    r = re.findall(r'SPOD:\s[0-9]+\s+(.*)\s+[0-9]+', text)
+    result = []
+    for elem in r:
+        for c in elem:
+            if (c in ['D','-']):
+                result.append(c)
+    print(result)
+    print(len(result))
+    return result
 
 def open_link(soup, url):
     global br
     # As soon as the response is obtained, the link to the results should be followed
     link_url = re.findall("info/.*.htm", str(soup))
     new_url = url + str(link_url[0])
-    response1 = br.open(new_url)
-    print(response1.read())
+    #print(new_url)
+    #s = requests.session()
+    #s.config['keep_alive'] = False
+    response1 = requests.get(new_url).text
     return response1 
 
 class spotd(Predictor):
     def calculate(self):
-        #self.calculated = [0, 2, 0.3, 1, 1, 0.7, 1]
         global br
         url = "http://sparks-lab.org/server/SPOT-disorder/"
         br.set_handle_robots(False)
@@ -29,23 +43,16 @@ class spotd(Predictor):
         #print(response.read())
         soup = BeautifulSoup(response.read(), features='html5lib')
         #print(soup.prettify())
-        results = open_link(soup, url)
+        results = ''
+        while True:
+            results = open_link(soup, url)
+            if 'Please wait' in results:
+                time.sleep(10)
+                print('Trying again...')
+            else:
+                break
+        #print(results)
+        self.calculated = parse_result(results)
+        return self.calculated
         
-        #response1 = br.open(new_url)
-        #soup = BeautifulSoup(response1.read(), features="html5lib")
-        #print(response1.geturl())
-        #print(response1.info())  # headers
-        #print(response1.read()) # body
-        #br.open(new_url)
-        #soup = BeautifulSoup(response.read(), features='html5lib')
-        #result_url = re.findall("info/SPOT-disorder/[0-9]+/spotd.tgz", str(soup))
-        #print(result_url)
-        #print("Opened second")
-        #r = requests.get(result_url)
-        
-        #if(r.ok):
-        #    z = zipfile.ZipFile(io.BytesIO(r.content))
-        #   z.extractall()
-        #    print("Unziped")
-        #    print(z)
-        return results
+
