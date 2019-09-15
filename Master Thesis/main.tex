@@ -41,14 +41,40 @@ headsepline, % Uncomment to get a line under the header
 %\usepackage{mathpazo} % Use the Palatino font by default
 \usepackage{amsmath}
 % dužine
-
+\usepackage{float}
 \usepackage{listings}                                                           
 \usepackage{color}
+\usepackage{xcolor}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{240, 226, 225}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
                                                                                 
 
 % \usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
@@ -157,7 +183,7 @@ headsepline, % Uncomment to get a line under the header
 {\scshape\LARGE Članovi komsije:\par}\vspace{0.2cm} % University name
 dr Jovana Kovačević \\
 prof. dr Gordana Pavlović-Lažetić  \\
-dr Nina Radojičić-Matić\\
+prof. Nevena Veljković\\
 
  
 \vfill
@@ -165,7 +191,7 @@ dr Nina Radojičić-Matić\\
 \vspace{1cm}
 \includegraphics[scale=0.25]{Logo}\\ % University/department logo - uncomment to place it
 \vspace{0.5cm}
-{\large Beograd, 2018}\\ % Date
+{\large Beograd, 2019.}\\ % Date
  
 \vfill
 \end{center}
@@ -227,8 +253,9 @@ dr Nina Radojičić-Matić\\
 \begin{abstract}
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
 % The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so can expand into the blank space above the title too\ldots
-
-...
+%Predikcija neuređenosti proteina računarskim putem omogućava pouzdan i brz način otkrivanja neuređenih regiona. Danas, postoji veliki broj prediktora kojima se dobijaju rezultati različite pouzdanosti. Cilj ovog rada je da objedini rezultate nekoliko njih i da konsenzusom utvrdi neuređene regione sa određenom pouzdanošću. 
+%Proteini su biološki makromolekuli neophodni za izgradnju i pravilno funkcionisanje ćelija, i igraju mnogobrojne uloge u različitim procesima koji se odvijaju unutar organizma. Struktura proteina zavisi od rasporeda aminokiselina i utiče na njegovu funkciju. Primarna struktura podrazumeva niz aminokiselina koje učestvuju u izgradnji proteina, dok se sekundarna odnosi na oblik koji protein zauzima u prostoru (spirala ili traka). Proteine sa nestabilnom sekundarnom strukturom nazivamo neuređenim. Pored značajne uloge u obavljanju brojnih bioloških funkcija, otkriveno je i da postoji veza između ovih proteina i razvoja savremenih, neizlečivih bolesti i zbog toga su oni u fokusu bioinformatičke zajednice. \\
+Neuređenost proteina se utvrđuje eksperimentalno, laboratorijskim analizama, ili uz pomoć prediktora za automatsko predviđanje neuređenosti proteina. Laboratorijske analize spadaju u spore, veoma skupe metode, koje ne mogu da odgovore na potrebe akademske zajednice i industrije. Iz tog razloga, poslednjih godina, došlo je do razvoja velikog broja alata za automatsko predviđanje neuređenosti proteina. Zbog velike brojnosti ovih alata, razvijaju se metaprediktori koji predstavljaju njihove kombinacije. Specifičan cilj ovog rada je razvoj jednog metaprediktora za određivanje neuređenosti proteina koji bi konsenzusom objedinio rezultate najnovijih prediktivnih alata. Alat će biti testiran na skupu proteina sa eksperimentalno utvrđenom neuređenošću DisProt.  
 
 \end{abstract}
 
@@ -238,7 +265,7 @@ dr Nina Radojičić-Matić\\
 
 \begin{acknowledgements}
 \addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-
+Zahvaljujem se, pre svega, svojoj porodici: Olgi i mami, za neizmernu podršku, ljubav i strpljenje pruženo tokom svih ovih godina. Nemoguće je rečima opisati zahvalnost koju osećam prema njima za sve što su mi pružile. Zahvaljujem se i svojim prijateljima koji su mi uvek bili podrška. Posebno bih se zahvalila i Anji Bukurov, sa kojom sam zajedno prošla kroz sve faze izrade naših master radova, Nikoli Ajzenhameru za sve \LaTeX detalje, i dr Tamari Vasić na pomoći oko prikupljanja literature i razumevanja bioloških osnova.
 
 \end{acknowledgements}
 
@@ -323,7 +350,7 @@ dr Nina Radojičić-Matić\\
 \include{Chapters/BioloskeOsnove}
 \include{Chapters/PredikcijaNeuredjenostiProteina}
 \include{Chapters/Aplikacija}
-\include{Chapters/Implementacija}
+%\include{Chapters/Implementacija}
 \include{Chapters/Rezultati}
 \include{Chapters/Zakljucak}
 
